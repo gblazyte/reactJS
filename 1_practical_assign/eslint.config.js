@@ -1,8 +1,8 @@
 import js from '@eslint/js'
-import globals from './1_practical_assign/node_modules/globals'
-import react from './1_practical_assign/node_modules/eslint-plugin-react'
-import reactHooks from './1_practical_assign/node_modules/eslint-plugin-react-hooks'
-import reactRefresh from './1_practical_assign/node_modules/eslint-plugin-react-refresh'
+import globals from 'globals'
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
   { ignores: ['dist'] },
