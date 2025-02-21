@@ -2,9 +2,9 @@ import React from "react";
 import ProductItem from "./ProductItem";
 
 const products = [
-    { id: 1, name: "Laptop", price: 2000 },
-    { id: 2, name: "Smartphone", price: 700 },
-    { id: 3, name: "Headphones", price: 100 },
+    { id: 1, name: "Book1", price: 20 },
+    { id: 2, name: "Book2", price: 10 },
+    { id: 3, name: "Book3", price: 25 },
 ];
 
 const ProductList = ({ addItemToCart }) => {
