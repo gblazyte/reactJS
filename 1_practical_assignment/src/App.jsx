@@ -9,7 +9,7 @@ import GuessGame from './guess/GuessGame';
 
 
 function App() {
-  const [activeSection, setActiveSection] = useState('taskList'); // Default active section
+  const [activeSection, setActiveSection] = useState('taskList');
 
 
   return (
