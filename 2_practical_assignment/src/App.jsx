@@ -1,46 +1,35 @@
 import React, { useState, useContext } from 'react';
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from "./pages/Dashboard";
+import RecipeDetail from "./components/RecipeDetail"; 
+import FavoritesPage from "./pages/FavoritesPage"; 
 import { AuthContext } from "./context/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
+import ProtectedRoute from "./components/ProtectedRoute"; 
 
 const App = () => {
-  const { user } = useContext(AuthContext); // Access user from global state
-
-  const [showLogin, setShowLogin] = useState(true);
-
-  const toggleForm = () => {
-    setShowLogin(!showLogin);
-  };
+  const { user } = useContext(AuthContext); 
+  const navigate = useNavigate(); 
 
   return (
     <div>
-      <h1>Welcome to the Authentication App</h1>
+      <h1>Recipe Website</h1>
 
-      {/* Only show the login/register forms if the user is not logged in */}
       {!user ? (
-        <>
-          <button onClick={toggleForm}>
-            {showLogin ? "Go to Register" : "Go to Login"}
-          </button>
-          {showLogin ? <Login /> : <Register />}
-        </>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
       ) : (
-        // When user is logged in, automatically redirect to the Dashboard
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+          <Route path="/recipe/:id" element={<ProtectedRoute element={<RecipeDetail />} />} />
+          <Route path="/favorites" element={<ProtectedRoute element={<FavoritesPage />} />} />
         </Routes>
       )}
-
-      {/* Protected Route for Dashboard */}
-      <Routes>
-        <Route
-          path="/dashboard"
-          element={<ProtectedRoute element={<Dashboard />} />}
-        />
-      </Routes>
     </div>
   );
 };

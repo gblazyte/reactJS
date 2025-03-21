@@ -24,14 +24,14 @@ const Register = () => {
             const existingUser = await axios.get(`http://localhost:5000/users?email=${formData.email}`);
 
             if (existingUser.data.length > 0) {
-                setMessage("User already exists ❌");
+                setMessage("User already exists");
                 return;
             }
 
             await axios.post("http://localhost:5000/users", formData);
             setMessage("Registration successful! ✅");
         } catch (error) {
-            setMessage("Error registering user ❌");
+            setMessage("Error registering user");
         }
     };
 

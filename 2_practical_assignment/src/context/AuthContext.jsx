@@ -5,7 +5,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    // Load user from localStorage on app start
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
         if (storedUser) {
@@ -15,12 +14,12 @@ export const AuthProvider = ({ children }) => {
 
     const login = (userData) => {
         setUser(userData);
-        localStorage.setItem("user", JSON.stringify(userData)); // Save to localStorage
+        localStorage.setItem("user", JSON.stringify(userData));
     };
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem("user"); // Remove from localStorage
+        localStorage.removeItem("user");
     };
 
     return (
