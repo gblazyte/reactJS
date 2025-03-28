@@ -29,7 +29,7 @@ const Register = () => {
             }
 
             await axios.post("http://localhost:5000/users", formData);
-            setMessage("Registration successful! ✅");
+            setMessage("Registration successful!");
         } catch (error) {
             setMessage("Error registering user");
         }

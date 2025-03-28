@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import RecipeCard from "../components/RecipeCard";  
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";  
-import { useNavigate } from "react-router-dom"; 
+import RecipeCard from "../components/RecipeCard";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const FavoritesPage = () => {
-    const { user } = useContext(AuthContext);  
+    const { user } = useContext(AuthContext);
     const [favorites, setFavorites] = useState([]);
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
-    const navigate = useNavigate();  
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchFavorites = async () => {
@@ -20,14 +19,14 @@ const FavoritesPage = () => {
                 const response = await axios.get(`http://localhost:5000/favorites?userId=${user.id}`);
                 const favoriteIds = response.data.map(fav => fav.recipeId);
 
-                
+
                 const recipesResponse = await axios.get("https://dummyjson.com/recipes");
                 const userFavoriteRecipes = recipesResponse.data.recipes.filter(recipe =>
                     favoriteIds.includes(recipe.id)
                 );
 
-                setFavorites(response.data);  
-                setRecipes(userFavoriteRecipes);  
+                setFavorites(response.data);
+                setRecipes(userFavoriteRecipes);
                 setLoading(false);
             } catch (err) {
                 setError("Failed to load favorite recipes");
@@ -36,7 +35,7 @@ const FavoritesPage = () => {
         };
 
         fetchFavorites();
-    }, [user.id]);  
+    }, [user.id]);
 
     const toggleFavorite = async (recipeId) => {
         const isFavorite = favorites.some((fav) => fav.recipeId === recipeId);
@@ -49,7 +48,7 @@ const FavoritesPage = () => {
                     setFavorites((prevFavorites) =>
                         prevFavorites.filter((fav) => fav.recipeId !== recipeId)
                     );
-                    setRecipes((prevRecipes) => prevRecipes.filter(recipe => recipe.id !== recipeId));  
+                    setRecipes((prevRecipes) => prevRecipes.filter(recipe => recipe.id !== recipeId));
                 }
             } else {
                 const response = await axios.post("http://localhost:5000/favorites", {
@@ -58,7 +57,7 @@ const FavoritesPage = () => {
                 });
                 setFavorites((prevFavorites) => [
                     ...prevFavorites,
-                    response.data, 
+                    response.data,
                 ]);
                 const newRecipe = await axios.get(`https://dummyjson.com/recipes/${recipeId}`);
                 setRecipes((prevRecipes) => [...prevRecipes, newRecipe.data]);
@@ -69,7 +68,7 @@ const FavoritesPage = () => {
     };
 
     const handleGoBack = () => {
-        navigate("/dashboard");  
+        navigate("/dashboard");
     };
 
     if (loading) return <p>Loading favorites...</p>;
@@ -88,8 +87,8 @@ const FavoritesPage = () => {
                     <RecipeCard
                         key={recipe.id}
                         recipe={recipe}
-                        isFavorite={true}  
-                        toggleFavorite={toggleFavorite}  
+                        isFavorite={true}
+                        toggleFavorite={toggleFavorite}
                     />
                 ))}
             </div>

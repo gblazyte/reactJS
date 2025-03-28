@@ -1,19 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext"; 
+// import { useContext } from "react";
+// import { AuthContext } from "../context/AuthContext"; 
 
 const RecipeCard = ({ recipe, isFavorite, toggleFavorite }) => {
-    const { user } = useContext(AuthContext);  
+    // const { user } = useContext(AuthContext);  
     const navigate = useNavigate();
 
     const handleFavoriteClick = async (e) => {
-        e.stopPropagation();  
+        e.stopPropagation();
         try {
-            await toggleFavorite(recipe.id); 
+            await toggleFavorite(recipe.id);
         } catch (err) {
-            console.error("Error updating favorite status", err);
+            console.error("Error updating favorite", err);
         }
     };
 
@@ -28,7 +27,7 @@ const RecipeCard = ({ recipe, isFavorite, toggleFavorite }) => {
                 className="favorite-btn"
                 onClick={handleFavoriteClick}
                 style={{
-                    color: isFavorite ? "red" : "gray", 
+                    color: isFavorite ? "red" : "gray",
                     backgroundColor: isFavorite ? "#ffcccc" : "transparent",
                     border: "none",
                     borderRadius: "50%",

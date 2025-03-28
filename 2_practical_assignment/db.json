@@ -17,6 +17,12 @@
       "username": "new_user3",
       "email": "new_user3@email.com",
       "password": "new_user3"
+    },
+    {
+      "id": "c82e",
+      "username": "new_user4",
+      "email": "new_user4@gmail.com",
+      "password": "new_user4"
     }
   ],
   "favorites": [
@@ -28,6 +34,16 @@
     {
       "id": "d7bd",
       "userId": "4057",
+      "recipeId": 3
+    },
+    {
+      "id": "ec2d",
+      "userId": "c82e",
+      "recipeId": 2
+    },
+    {
+      "id": "c86a",
+      "userId": "c82e",
       "recipeId": 3
     }
   ]

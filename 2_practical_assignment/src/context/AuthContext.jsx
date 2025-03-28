@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(); //allows any component in the app to access authentication info
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);

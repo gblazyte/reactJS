@@ -70,7 +70,7 @@ const Login = () => {
 
 
             <button onClick={goToRegisterPage}>
-                Don't have an account? Register here
+                Register here
             </button>
         </div>
     );

@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import RecipeCard from "./RecipeCard";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";  
+import { AuthContext } from "../context/AuthContext";
 
 const RecipeList = () => {
-    const { user } = useContext(AuthContext); 
+    const { user } = useContext(AuthContext);
     const [recipes, setRecipes] = useState([]);
     const [favorites, setFavorites] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [recipesPerPage] = useState(5);
 
@@ -34,31 +31,20 @@ const RecipeList = () => {
 
         fetchRecipes();
         fetchFavorites();
-        setLoading(false);
-    }, [user.id]);  
+    }, [user.id]);
 
-    
+
     const toggleFavorite = async (recipeId) => {
         const isFavorite = favorites.some((fav) => fav.recipeId === recipeId);
 
         try {
             if (isFavorite) {
                 const favoriteToDelete = favorites.find((fav) => fav.recipeId === recipeId);
-                if (favoriteToDelete) {
-                    await axios.delete(`http://localhost:5000/favorites/${favoriteToDelete.id}`);
-                    setFavorites((prevFavorites) =>
-                        prevFavorites.filter((fav) => fav.recipeId !== recipeId)
-                    );
-                }
+                await axios.delete(`http://localhost:5000/favorites/${favoriteToDelete.id}`);
+                setFavorites(favorites.filter((fav) => fav.recipeId !== recipeId));
             } else {
-                const response = await axios.post("http://localhost:5000/favorites", {
-                    userId: user.id,
-                    recipeId: recipeId,
-                });
-                setFavorites((prevFavorites) => [
-                    ...prevFavorites,
-                    response.data,  
-                ]);
+                const response = await axios.post("http://localhost:5000/favorites", { userId: user.id, recipeId });
+                setFavorites([...favorites, response.data]);
             }
         } catch (err) {
             console.error("Error updating favorite status", err);
@@ -68,13 +54,9 @@ const RecipeList = () => {
     const indexOfLastRecipe = currentPage * recipesPerPage;
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+    const totalPages = Math.ceil(recipes.length / recipesPerPage);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-    if (loading) return <p>Loading recipes...</p>;
-    if (error) return <p>{error}</p>;
-
-    const totalPages = Math.ceil(recipes.length / recipesPerPage);
 
     return (
         <div className="recipe-list">

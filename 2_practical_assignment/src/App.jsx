@@ -3,14 +3,13 @@ import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from "./pages/Dashboard";
-import RecipeDetail from "./components/RecipeDetail"; 
-import FavoritesPage from "./pages/FavoritesPage"; 
+import RecipeDetail from "./components/RecipeDetail";
+import FavoritesPage from "./pages/FavoritesPage";
 import { AuthContext } from "./context/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute"; 
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
-  const { user } = useContext(AuthContext); 
-  const navigate = useNavigate(); 
+  const { user } = useContext(AuthContext);
 
   return (
     <div>

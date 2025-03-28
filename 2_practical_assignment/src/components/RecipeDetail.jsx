@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const RecipeDetail = () => {
-    const { id } = useParams();
+    const { id } = useParams(); // gets the recipe ID from the URL
     const navigate = useNavigate();
     const [recipe, setRecipe] = useState(null);
     const [loading, setLoading] = useState(true);
