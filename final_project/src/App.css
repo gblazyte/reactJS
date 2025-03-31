@@ -1,42 +1,303 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  /* Distribute space evenly */
+  align-items: center;
+  /* Vertically center the items */
+  background-color: #333;
+  /* Dark background */
+  padding: 1rem 0;
+  /* Vertical padding */
+  list-style-type: none;
+  margin: 0;
+}
+
+.navbar li {
+  margin: 0 15px;
+  /* Spacing between links */
+}
+
+.navbar li a {
+  text-decoration: none;
+  /* Remove underline from links */
+  color: white;
+  /* White text color */
+  font-size: 18px;
+  /* Font size */
+  font-weight: bold;
+  /* Make the text bold */
+  transition: color 0.3s ease;
+  /* Smooth transition for color change */
+}
+
+.navbar li a:hover {
+  color: #ff6347;
+  /* Change color on hover (tomato red) */
+}
+
+.navbar li a.active {
+  color: #ff6347;
+  /* Active link color */
+}
+
+.navbar .auth-links {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar .auth-links li {
+  margin: 0;
+}
+
+.navbar .auth-links li a {
+  font-size: 16px;
+  /* Slightly smaller font for authentication links */
+  font-weight: normal;
+  /* Regular weight for these links */
+}
+
+.navbar .auth-links li a:hover {
+  color: #ff6347;
+}
+
+.navbar .auth-links li a.active {
+  color: #ff6347;
+}
+
+
+/* Home Page Styles */
+.home-container {
+  text-align: center;
+  padding: 50px;
+}
+
+.home-container h1 {
+  color: #333;
+}
+
+.home-container p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Add Book Page Styles */
+.add-book-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.add-book-container h2 {
+  color: #333;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.add-book-container form {
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.add-book-container label {
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
 }
 
-.card {
-  padding: 2em;
+.add-book-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-.read-the-docs {
-  color: #888;
-} */
+.add-book-container button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-book-container button:hover {
+  background-color: #555;
+}
+
+/* Login Page Styles */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  color: #333;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container label {
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.login-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login-container button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+  background-color: #555;
+}
+
+/* Register Page Styles */
+.register-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.register-container h2 {
+  color: #333;
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container label {
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.register-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.register-container button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.register-container button:hover {
+  background-color: #555;
+}
+
+/* Edit Book Page Styles */
+.edit-book-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.edit-book-container h2 {
+  color: #333;
+}
+
+.edit-book-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-book-container label {
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.edit-book-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.edit-book-container button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-book-container button:hover {
+  background-color: #555;
+}
+
+/* Book Detail Page Styles */
+.book-detail-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.book-detail-container h2 {
+  color: #333;
+}
+
+.book-detail-container p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.book-detail-container strong {
+  color: #222;
+}
+
