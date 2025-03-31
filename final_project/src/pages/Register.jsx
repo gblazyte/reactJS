@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-    const [user, setUser] = useState({ name: "", email: "", password: "" });
-
-    const handleChange = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value });
-    };
+    const { login } = useAuth();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("User registered:", user);
-        setUser({ name: "", email: "", password: "" }); // Reset form after submission
+        login(email, password);
+        navigate("/"); 
     };
 
     return (
@@ -20,30 +22,24 @@ const Register = () => {
                 <label>Name:</label>
                 <input
                     type="text"
-                    name="name"
-                    value={user.name}
-                    onChange={handleChange}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                 />
-
                 <label>Email:</label>
                 <input
                     type="email"
-                    name="email"
-                    value={user.email}
-                    onChange={handleChange}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-
                 <label>Password:</label>
                 <input
                     type="password"
-                    name="password"
-                    value={user.password}
-                    onChange={handleChange}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-
                 <button type="submit">Register</button>
             </form>
         </div>

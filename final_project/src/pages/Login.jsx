@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const [credentials, setCredentials] = useState({ email: "", password: "" });
-
-    const handleChange = (e) => {
-        setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    };
+    const { login } = useAuth();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("User logged in:", credentials);
-        setCredentials({ email: "", password: "" }); // Reset form after submission
+        login(email, password);
+        navigate("/");
     };
 
     return (
@@ -20,21 +21,17 @@ const Login = () => {
                 <label>Email:</label>
                 <input
                     type="email"
-                    name="email"
-                    value={credentials.email}
-                    onChange={handleChange}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-
                 <label>Password:</label>
                 <input
                     type="password"
-                    name="password"
-                    value={credentials.password}
-                    onChange={handleChange}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-
                 <button type="submit">Login</button>
             </form>
         </div>

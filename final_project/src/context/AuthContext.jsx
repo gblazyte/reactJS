@@ -1,63 +1,42 @@
-// import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useState, useContext, useEffect } from "react";
 
-// // Initial state
-// const initialState = {
-//     user: null,
-//     isAuthenticated: false,
-//     loading: false,
-//     error: null,
-// };
+// Create the context
+const AuthContext = createContext();
 
-// // Reducer function to handle actions
-// const authReducer = (state, action) => {
-//     switch (action.type) {
-//         case 'LOGIN':
-//             return {
-//                 ...state,
-//                 user: action.payload,
-//                 isAuthenticated: true,
-//             };
-//         case 'LOGOUT':
-//             return {
-//                 ...state,
-//                 user: null,
-//                 isAuthenticated: false,
-//             };
-//         case 'SET_AUTH_ERROR':
-//             return {
-//                 ...state,
-//                 error: action.payload,
-//             };
-//         case 'REGISTER':
-//             return {
-//                 ...state,
-//                 user: action.payload,
-//                 isAuthenticated: true,
-//             };
-//         default:
-//             return state;
-//     }
-// };
+// Custom hook to use auth context
+export const useAuth = () => {
+    return useContext(AuthContext);
+};
 
-// // Create context
-// const AuthContext = createContext();
+// Provider to wrap app and manage state
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
 
-// // Create provider
-// export const AuthProvider = ({ children }) => {
-//     const [state, dispatch] = useReducer(authReducer, initialState);
+    // Simulate checking localStorage for saved user (to keep user logged in across refreshes)
+    useEffect(() => {
+        const savedUser = JSON.parse(localStorage.getItem("user"));
+        if (savedUser) {
+            setUser(savedUser);
+        }
+    }, []);
 
-//     // Actions
-//     const login = (user) => dispatch({ type: 'LOGIN', payload: user });
-//     const logout = () => dispatch({ type: 'LOGOUT' });
-//     const setAuthError = (error) => dispatch({ type: 'SET_AUTH_ERROR', payload: error });
-//     const register = (user) => dispatch({ type: 'REGISTER', payload: user });
+    // Login function (simulate login)
+    const login = (email, password) => {
+        // Normally you'd send a request to the server, but here we'll simulate successful login
+        const mockUser = { email, name: "John Doe" };
+        setUser(mockUser);
+        localStorage.setItem("user", JSON.stringify(mockUser)); // Save user in localStorage
+    };
 
-//     return (
-//         <AuthContext.Provider value={{ state, login, logout, setAuthError, register }}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
+    // Logout function
+    const logout = () => {
+        setUser(null);
+        localStorage.removeItem("user");
+    };
 
-// // Custom hook to use authentication context
-// export const useAuth = () => useContext(AuthContext);
+    return (
+        <AuthContext.Provider value={{ user, login, logout }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
