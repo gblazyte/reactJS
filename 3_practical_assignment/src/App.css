@@ -1,0 +1,96 @@
+/* Main Container */
+.app-container {
+  width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  /* Vertically center the input and button */
+  justify-content: center;
+  /* Horizontally center the input and button */
+  gap: 10px;
+  /* Space between input and button */
+  margin-bottom: 20px;
+}
+
+/* Search Bar */
+.search-bar {
+  width: 70%;
+  padding: 10px;
+  height: 25px;
+  /* Explicitly set the height */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Clear Button */
+.clear-btn {
+  padding: 10px;
+  height: 40px;
+  /* Make the button height match the input */
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.clear-btn:hover {
+  background-color: #cc0000;
+}
+
+/* User List */
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* User Card */
+.user-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  text-align: center;
+}
+
+.user-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.user-card p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* No Results Message */
+.no-results {
+  color: #ff4d4d;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Loading Message */
+.loading-message {
+  font-size: 18px;
+  color: #007bff;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
