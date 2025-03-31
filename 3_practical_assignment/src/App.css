@@ -12,11 +12,8 @@
 .search-container {
   display: flex;
   align-items: center;
-  /* Vertically center the input and button */
   justify-content: center;
-  /* Horizontally center the input and button */
   gap: 10px;
-  /* Space between input and button */
   margin-bottom: 20px;
 }
 
@@ -25,7 +22,6 @@
   width: 70%;
   padding: 10px;
   height: 25px;
-  /* Explicitly set the height */
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -35,7 +31,6 @@
 .clear-btn {
   padding: 10px;
   height: 40px;
-  /* Make the button height match the input */
   background-color: #ff4d4d;
   color: white;
   border: none;

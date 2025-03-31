@@ -6,38 +6,32 @@ import "./App.css";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true); 
 
-  // Memoized search function
   const handleSearch = useCallback((value) => {
     setSearchTerm(value);
   }, []);
 
-  // Clear Search function
   const clearSearch = () => {
     setSearchTerm("");
   };
 
-  // Memoized user filtering
   const filteredUsers = useMemo(() => {
     return users.filter((user) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [searchTerm]);
 
-  // useEffect to handle loading state
   useEffect(() => {
-    // Assuming the data is ready or the operation completes immediately
-    setLoading(false); // Set loading to false after the operation completes
-  }, []); // Empty dependency array means this runs only once when the component mounts
+    setLoading(false); 
+  }, []); 
 
   return (
     <div className="app-container">
       <h1>User Search</h1>
 
-      {/* Show loading spinner/message when loading */}
       {loading ? (
-        <p className="loading-message">Loading...</p> // Display loading message
+        <p className="loading-message">Loading...</p>
       ) : (
         <>
           <SearchBar searchTerm={searchTerm} onSearch={handleSearch} onClear={clearSearch} />
