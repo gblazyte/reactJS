@@ -2,14 +2,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
-  /* Set a default sans-serif font */
-  background-color: #f4f4f4;
-  /* Light grey background color */
-  color: #333;
-  /* Default text color */
-  line-height: 1.6;
-  /* Improve line spacing for readability */
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(to right, #f4f4f4, #eaeaea);
+  color: #2c2c2c;
+  line-height: 1.7;
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -20,16 +17,16 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
-  font-weight: bold;
-  color: #333;
-  /* Dark color for headings */
+  font-weight: 700;
+  color: #2a2a2a;
+  letter-spacing: 0.5px;
 }
 
 p {
-  font-size: 1rem;
-  color: #555;
-  /* Slightly lighter text color for paragraphs */
-  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: #4d4d4d;
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
 }
 
 ul {
@@ -41,16 +38,16 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
-  /* Links will inherit the color from their parent */
+  position: relative;
+  transition: color 0.3s ease;
 }
 
 a:focus,
 a:hover {
-  color: #ff6347;
-  /* Tomato color on hover */
+  color: #1588ab;
 }
 
-/* Apply a container to center content and give some padding */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -59,28 +56,30 @@ a:hover {
 
 /* Add some basic styles for buttons */
 button {
-  background-color: #333;
+  background-color: #1588ab;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  border-radius: 4px;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: #ff6347;
-  /* Tomato red on hover */
+  transform: translateY(-2px);
 }
 
 button:disabled {
-  background-color: #ccc;
-  /* Disable color */
+  background-color: #bbb;
   cursor: not-allowed;
-  /* Change cursor when disabled */
+  opacity: 0.7;
 }
 
-/* Additional margin for the body content */
 .main-content {
-  margin-top: 20px;
+  margin-top: 30px;
+  animation: fadeIn 0.5s ease-in-out;
 }

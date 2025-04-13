@@ -1,43 +1,38 @@
 .navbar {
   display: flex;
   justify-content: space-around;
-  /* Distribute space evenly */
   align-items: center;
-  /* Vertically center the items */
-  background-color: #333;
-  /* Dark background */
-  padding: 1rem 0;
-  /* Vertical padding */
+  background-color: #2b2d42;
+  padding: 1rem 2rem;
   list-style-type: none;
   margin: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-bottom: 2px solid #5647ff;
+
+
 }
 
 .navbar li {
   margin: 0 15px;
-  /* Spacing between links */
 }
 
 .navbar li a {
   text-decoration: none;
-  /* Remove underline from links */
   color: white;
-  /* White text color */
   font-size: 18px;
-  /* Font size */
   font-weight: bold;
-  /* Make the text bold */
-  transition: color 0.3s ease;
-  /* Smooth transition for color change */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.2s ease;
 }
 
 .navbar li a:hover {
-  color: #ff6347;
-  /* Change color on hover (tomato red) */
+  color: #1588ab;
+  transform: scale(1.05);
 }
 
 .navbar li a.active {
-  color: #ff6347;
-  /* Active link color */
+  color: #1588ab;
 }
 
 .navbar .auth-links {
@@ -51,28 +46,28 @@
 
 .navbar .auth-links li a {
   font-size: 16px;
-  /* Slightly smaller font for authentication links */
   font-weight: normal;
-  /* Regular weight for these links */
 }
 
 .navbar .auth-links li a:hover {
-  color: #ff6347;
+  color: #1588ab;
 }
 
 .navbar .auth-links li a.active {
-  color: #ff6347;
+  color: #1588ab;
 }
 
 
 /* Home Page Styles */
 .home-container {
   text-align: center;
-  padding: 50px;
+  padding: 60px 20px;
 }
 
 .home-container h1 {
-  color: #333;
+  /* color: #333; */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 .home-container p {
@@ -84,15 +79,19 @@
 .add-book-container {
   max-width: 400px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 30px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
+  border-top: 5px solid #1588ab;
 }
 
 .add-book-container h2 {
   color: #333;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .add-book-container form {
@@ -107,41 +106,57 @@
 }
 
 .add-book-container input {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-book-container input:focus {
+  border-color: #1588ab;
+  transform: scale(1.02);
+  outline: none;
 }
 
 .add-book-container button {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #333;
+  padding: 12px 20px;
+  background-color: #1588ab;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s ease;
 }
 
 .add-book-container button:hover {
-  background-color: #555;
+  background-color: #3d9ebc;
+  transform: scale(1.05);
+}
+
+.add-book-container button:focus {
+  outline: none;
 }
 
 /* Login Page Styles */
 .login-container {
   max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
+  margin: 60px auto;
+  padding: 30px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  border-top: 5px solid #1588ab;
 }
 
 .login-container h2 {
   color: #333;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .login-container form {
@@ -151,46 +166,62 @@
 
 .login-container label {
   text-align: left;
-  margin: 10px 0 5px;
+  margin: 15px 0 5px;
   font-weight: bold;
 }
 
 .login-container input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
   font-size: 16px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-container input:focus {
+  border-color: #1588ab;
+  transform: scale(1.02);
+  outline: none;
 }
 
 .login-container button {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #333;
+  background-color: #1588ab;
+  padding: 12px 20px;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s ease;
 }
 
 .login-container button:hover {
-  background-color: #555;
+  background-color: #3d9ebc;
+  transform: scale(1.05);
+}
+
+.login-container button:focus {
+  outline: none;
 }
 
 /* Register Page Styles */
 .register-container {
   max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
+  margin: 60px auto;
+  padding: 30px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   text-align: center;
+  border-top: 5px solid #1588ab;
 }
 
 .register-container h2 {
+  font-size: 2rem;
   color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .register-container form {
@@ -200,46 +231,63 @@
 
 .register-container label {
   text-align: left;
-  margin: 10px 0 5px;
+  margin: 15px 0 5px;
   font-weight: bold;
 }
 
 .register-container input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
   font-size: 16px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.register-container input:focus {
+  border-color: #1588ab;
+  transform: scale(1.02);
+  outline: none;
 }
 
 .register-container button {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #333;
+  padding: 12px 20px;
+  background-color: #1588ab;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s ease;
 }
 
 .register-container button:hover {
-  background-color: #555;
+  background-color: #3d9ebc;
+  transform: scale(1.05);
+}
+
+.register-container button:focus {
+  outline: none;
 }
 
 /* Edit Book Page Styles */
 .edit-book-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 30px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  border-top: 5px solid #1588ab;
 }
 
 .edit-book-container h2 {
+  font-size: 2rem;
   color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
 }
 
 .edit-book-container form {
@@ -249,31 +297,44 @@
 
 .edit-book-container label {
   text-align: left;
-  margin: 10px 0 5px;
+  margin: 15px 0 5px;
   font-weight: bold;
 }
 
 .edit-book-container input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
   font-size: 16px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.edit-book-container input:focus {
+  border-color: #1588ab;
+  transform: scale(1.02);
+  outline: none;
 }
 
 .edit-book-container button {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #333;
+  padding: 12px 20px;
+  background-color: #1588ab;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s ease;
 }
 
 .edit-book-container button:hover {
-  background-color: #555;
+  background-color: #3d9ebc;
+  transform: scale(1.05);
+
+}
+
+.edit-book-container button:focus {
+  outline: none;
 }
 
 /* Book Detail Page Styles */
@@ -283,12 +344,13 @@
   padding: 20px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .book-detail-container h2 {
   color: #333;
+  font-size: 2rem;
 }
 
 .book-detail-container p {
@@ -313,16 +375,54 @@
 }
 
 .book-item {
-  background: #f4f4f4;
+  background: linear-gradient(135deg, #e1eef1, rgb(218, 232, 239));
   margin: 10px auto;
-  padding: 10px;
-  border-radius: 5px;
-  width: 50%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 15px;
+  width: 70%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+
+}
+
+.book-item:hover {
+  transform: scale(1.05);
+  background-color: #1588ab;
+  /* color: white; */
+}
+
+.book-item strong {
+  font-size: 1.3rem;
+  color: #222;
+}
+
+.book-item em {
+  color: #777;
+}
+
+.book-item button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #1588ab;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.book-item button:hover {
+  background-color: #3d9ebc;
+  transform: scale(1.05);
+}
+
+.book-item button:focus {
+  outline: none;
 }
 
 .filter-container {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .filter-container label {
@@ -331,6 +431,14 @@
 }
 
 .filter-container select {
-  padding: 5px 10px;
+  padding: 8px 12px;
   font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.filter-container select:focus {
+  border-color: #1588ab;
+  outline: none;
 }

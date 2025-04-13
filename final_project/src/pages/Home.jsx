@@ -46,7 +46,6 @@ const Home = () => {
             <h1>Welcome to the Online Library</h1>
             <p>Browse, add, and manage books easily.</p>
 
-            {/* Genre Filter */}
             <div className="filter-container">
                 <label htmlFor="genre">Filter by Genre:</label>
                 <select
