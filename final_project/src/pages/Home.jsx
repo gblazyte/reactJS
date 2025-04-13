@@ -6,14 +6,18 @@ const Home = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [genre, setGenre] = useState("");
+    const [genres, setGenres] = useState(['Fiction', 'Non-Fiction', 'Sci-Fi', 'Fantasy', 'Mystery', 'Young Adult']);
 
     useEffect(() => {
         fetchBooks();
-    }, []);
+    }, [genre]);
 
     const fetchBooks = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/books");
+            const response = await axios.get("http://localhost:5000/api/books", {
+                params: { genre },
+            });
             setBooks(response.data);
         } catch (err) {
             console.error("Error fetching books:", err);
@@ -30,7 +34,7 @@ const Home = () => {
 
         try {
             await axios.delete(`http://localhost:5000/api/books/${id}`);
-            setBooks(books.filter(book => book.id !== id)); // Update UI
+            setBooks(books.filter(book => book.id !== id));
         } catch (err) {
             console.error("Error deleting book:", err);
             alert("Failed to delete book.");
@@ -41,6 +45,23 @@ const Home = () => {
         <div className="home-container">
             <h1>Welcome to the Online Library</h1>
             <p>Browse, add, and manage books easily.</p>
+
+            {/* Genre Filter */}
+            <div className="filter-container">
+                <label htmlFor="genre">Filter by Genre:</label>
+                <select
+                    id="genre"
+                    value={genre}
+                    onChange={(e) => setGenre(e.target.value)}
+                >
+                    <option value="">All Genres</option>
+                    {genres.map((gen, idx) => (
+                        <option key={idx} value={gen}>
+                            {gen}
+                        </option>
+                    ))}
+                </select>
+            </div>
 
             {loading ? (
                 <p>Loading books...</p>

@@ -320,3 +320,17 @@
   width: 50%;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.filter-container label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.filter-container select {
+  padding: 5px 10px;
+  font-size: 16px;
+}

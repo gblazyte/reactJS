@@ -18,7 +18,18 @@ router.post("/add", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    db.all("SELECT * FROM books", [], (err, rows) => {
+    const { genre } = req.query;
+
+    let query = "SELECT * FROM books";
+    let params = [];
+
+    if (genre) {
+        query += " WHERE genre = ?";
+        params.push(genre);
+    }
+
+
+    db.all(query, params, (err, rows) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
