@@ -8,19 +8,16 @@ const Navbar = () => {
     return (
         <nav>
             <ul className="navbar">
-                {/* Show Home link regardless of login status */}
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
 
                 {user && (
                     <>
                         <li>
-                            <Link to="/add-book">Add Book</Link>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/edit-book">Edit Book</Link>
+                            <Link to="/add-book">Add Book</Link>
                         </li>
+
                     </>
                 )}
 

@@ -17,14 +17,14 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<PrivateRoute element={<Home />} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
           <Route path="/add-book" element={<PrivateRoute element={<AddBook />} />} />
-          <Route path="/edit-book" element={<PrivateRoute element={<EditBook />} />} />
+          <Route path="/edit-book/:id" element={<PrivateRoute element={<EditBook />} />} />
 
-          <Route path="/book/:id" element={<BookDetail />} />
+          <Route path="/book/:id" element={<PrivateRoute element={<BookDetail />} />} />
         </Routes>
       </Router>
     </AuthProvider>

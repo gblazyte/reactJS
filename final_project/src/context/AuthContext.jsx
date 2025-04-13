@@ -1,18 +1,15 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import axios from "axios";
 
-// Create the context
 const AuthContext = createContext();
 
-// Custom hook to use auth context
 export const useAuth = () => {
     return useContext(AuthContext);
 };
 
-// Provider to wrap app and manage state
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    // Simulate checking localStorage for saved user (to keep user logged in across refreshes)
     useEffect(() => {
         const savedUser = JSON.parse(localStorage.getItem("user"));
         if (savedUser) {
@@ -20,22 +17,48 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    // Login function (simulate login)
-    const login = (email, password) => {
-        // Normally you'd send a request to the server, but here we'll simulate successful login
-        const mockUser = { email, name: "John Doe" };
-        setUser(mockUser);
-        localStorage.setItem("user", JSON.stringify(mockUser)); // Save user in localStorage
+    const setUserAndSave = (user) => {
+        setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
     };
 
-    // Logout function
+
+    const register = async (name, email, password) => {
+        try {
+            const response = await axios.post("http://localhost:5000/api/auth/register", {
+                name,
+                email,
+                password
+            });
+            setUserAndSave(response.data);
+            return { success: true, data: response.data };
+        } catch (error) {
+            console.error("Registration failed:", error.response?.data?.error || error.message);
+            return { success: false, error: error.response?.data?.error || "Registration failed" };
+        }
+    };
+
+    const login = async (email, password) => {
+        try {
+            const response = await axios.post("http://localhost:5000/api/auth/login", {
+                email,
+                password
+            });
+            setUserAndSave(response.data);
+            return { success: true };
+        } catch (error) {
+            console.error("Login failed:", error.response?.data?.error || error.message);
+            return { success: false, error: error.response?.data?.error || "Login failed" };
+        }
+    };
+
     const logout = () => {
         setUser(null);
         localStorage.removeItem("user");
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, register }}>
             {children}
         </AuthContext.Provider>
     );

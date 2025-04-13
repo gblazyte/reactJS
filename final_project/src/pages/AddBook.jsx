@@ -1,21 +1,34 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const AddBook = () => {
     const [book, setBook] = useState({ title: "", author: "", genre: "" });
+    const [message, setMessage] = useState(""); 
 
     const handleChange = (e) => {
         setBook({ ...book, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Book added:", book);
-        setBook({ title: "", author: "", genre: "" }); // Reset form after submission
+        setMessage(""); 
+
+        try {
+            const response = await axios.post("http://localhost:5000/api/books/add", book);
+            console.log("Book added:", response.data);
+            setMessage("Book added successfully!");
+
+            setBook({ title: "", author: "", genre: "" });
+        } catch (error) {
+            console.error("Error adding book:", error);
+            setMessage("Failed to add book. Please try again.");
+        }
     };
 
     return (
         <div className="add-book-container">
             <h2>Add a New Book</h2>
+            {message && <p>{message}</p>}
             <form onSubmit={handleSubmit}>
                 <label>Title:</label>
                 <input

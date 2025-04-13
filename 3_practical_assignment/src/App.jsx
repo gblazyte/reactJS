@@ -6,15 +6,15 @@ import "./App.css";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   const handleSearch = useCallback((value) => {
     setSearchTerm(value);
   }, []);
 
-  const clearSearch = () => {
+  const clearSearch = useCallback(() => {
     setSearchTerm("");
-  };
+  }, []);
 
   const filteredUsers = useMemo(() => {
     return users.filter((user) =>
@@ -23,8 +23,8 @@ const App = () => {
   }, [searchTerm]);
 
   useEffect(() => {
-    setLoading(false); 
-  }, []); 
+    setLoading(false);
+  }, []);
 
   return (
     <div className="app-container">

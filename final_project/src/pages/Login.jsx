@@ -1,22 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+
 const Login = () => {
-    const { login } = useAuth();
+    const { user, login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        if (user) {
+            navigate("/");
+        }
+    }, [user, navigate]);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        login(email, password);
-        navigate("/");
+        setError("")
+
+        const response = await login(email, password);
+        if (response.success) {
+            navigate("/");
+        } else {
+            setError(response.error);
+        }
     };
 
     return (
         <div className="login-container">
             <h2>Login</h2>
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <label>Email:</label>
                 <input

@@ -1,23 +1,32 @@
 import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
-    const { login } = useAuth();
+    const { register } = useAuth();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        login(email, password);
-        navigate("/"); 
+        setError("");
+
+        const response = await register(name, email, password);
+        if (response.success) {
+            navigate("/login");
+        } else {
+            setError(response.error);
+        }
+
     };
 
     return (
         <div className="register-container">
             <h2>Register</h2>
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <label>Name:</label>
                 <input
