@@ -1,29 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import BookDetail from "./BookDetail";
 
 const EditBook = () => {
-    const { id } = useParams(); 
+    const { id } = useParams();
     const navigate = useNavigate();
     const [book, setBook] = useState({ title: "", author: "", genre: "" });
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
+    const { book: fetchedBook, loading, error } = BookDetail(id);
 
     useEffect(() => {
-        const fetchBook = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/api/books/${id}`);
-                setBook(response.data);
-            } catch (err) {
-                console.error("Error fetching book:", err);
-                setError("Failed to load book.");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchBook();
-    }, [id]);
+        if (fetchedBook) {
+            setBook(fetchedBook);
+        }
+    }, [fetchedBook]);
 
     const handleChange = (e) => {
         setBook({ ...book, [e.target.name]: e.target.value });
@@ -34,7 +24,7 @@ const EditBook = () => {
 
         try {
             await axios.put(`http://localhost:5000/api/books/${id}`, book);
-            navigate("/"); 
+            navigate("/");
         } catch (err) {
             console.error("Error updating book:", err);
             setError("Failed to update book.");
